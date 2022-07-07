@@ -1,0 +1,7 @@
+--- # my first testing YAML  playbook
+- hosts: DEMO
+  user: ansible
+  become: yes
+  connection: ssh
+  gather_facts: yes
+  
