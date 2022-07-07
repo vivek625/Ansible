@@ -1,0 +1,5 @@
+
+playbook execute command
+go to ansible server in aws service
+command-- ansible-playbook <filename.yml> 
+command for DRY CHECK -- ansible-playbook <filename.yml> --check
