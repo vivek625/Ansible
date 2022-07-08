@@ -1,0 +1,28 @@
+── playbook
+│   └── roles
+│       └── webserver
+│           └── tasks
+
+
+# -------------------------------
+.
+├── master.yml  
+└── roles
+    └── webserver
+        └── tasks
+            └── main.yml
+
+# cd playbook
+# vi roles/webserver/tasks/main.yml
+- name: install apache on RedHat
+  yum: pkg=httpd state=latest
+
+~                                                                                                                                                       
+# vi master.yml           
+--- # master playbook  for webserver
+ - hosts: DEMO
+   user: ansible
+   become: yes
+   connection: ssh
+   roles:
+         - webserver
