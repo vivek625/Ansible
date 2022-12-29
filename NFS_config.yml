@@ -1,0 +1,39 @@
+---
+- name: install package nfs-utils
+  hosts: DEMO
+  tasks:
+      - name: this is to install nfs
+        yum: 
+            name: nfs-utils
+            state: present
+      - name: create / share
+        file: 
+            path: /share
+            state: directory
+            mode: '0777'
+      - name: configure exports
+        lineinfile: 
+            path: /etc/exports
+            line: '/share* (rw , sync , no_root_squash)'
+      - name: start the service
+        service: 
+            name: nfs-server
+      - name: manage firewalld add nfs
+        firewalld:
+            service: nfs
+            permanent: yes
+            state: enabled
+            immediate: yes
+
+      - name: manage firewalld add rpc-bind
+        firewalld:
+            service: rpc-bind
+            permanent: yes
+            state: enabled
+            immediate: yes
+      - name: manage firewalld add mounted
+        firewalld:
+            service: mountd
+            permanent: yes
+            state: enabled
+            immediate: yes
