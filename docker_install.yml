@@ -1,0 +1,12 @@
+---
+- hosts: DEMO
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - package: "name=docker state=present"
+    - name: "starting docker services"
+      service:
+          name: "docker"
+          state: started
+          enabled: yes
