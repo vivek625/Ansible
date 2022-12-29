@@ -1,0 +1,15 @@
+---
+- name: this is variable
+  hosts: DEMO
+  user: ansible
+  become: yes
+  connection: ssh
+  vars:
+      emp_name: vivek
+      org_name: grass
+  vars_files:
+      - ./var1.yml
+  tasks:
+      - name: print a msg
+        debug: 
+            msg: welcome {{package_name}} to {{service_name}}
