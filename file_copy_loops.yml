@@ -1,0 +1,11 @@
+--- 
+- name: this is my loop play
+  hosts: DEMO
+  tasks:
+    - copy:
+        src: "{{ item }}"
+        dest: /tmp
+      loop:
+      - a.txt
+      - b.txt
+      - c.txt
