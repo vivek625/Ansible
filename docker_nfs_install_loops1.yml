@@ -1,0 +1,9 @@
+---
+- name: this is my loop play
+  hosts: DEMO
+  tasks: 
+      - yum:
+          name: 
+             - httpd
+             - nfs-utils
+          state: present
