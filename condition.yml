@@ -1,0 +1,14 @@
+---
+- name: testing condition
+  hosts: all
+  tasks:
+      - name: install package on Ubuntu
+        apt:
+            name: apache2
+            state: latest
+        when: ansible_distribution == "Ubuntu"
+      - name: install on Amazon
+        yum:
+            name: httpd 
+            state: latest
+        when: ansible_distribution == "Amazon" and ansible_distribution_major_version >= "2"
